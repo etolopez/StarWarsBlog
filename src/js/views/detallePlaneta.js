@@ -32,7 +32,7 @@ export const DetallePlaneta = (props) => {
   return (
     <div className="container">
     {data == "" ? (
-        "Cargando.. "
+        <div className="">Cargando... <i className="fa fa-spinner"></i> </div>
       ) : (
         <div className="container=fluid">
           <div className="row">

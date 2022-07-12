@@ -8,15 +8,15 @@ export const Navbar = () => {
 
   let style1 = {
     width: "10rem",
-    paddingLeft: "5px",
+    paddingLeft: "15px",
   };
 
   let style2 = {
-    paddingRight: "5px",
+    marginRight: "25px",
   };
 
   let style3 = {
-    background: "rgb(196, 196, 196)",
+    backgroundColor: "rgb(231, 231, 231)",
   };
 
   let style4 = {
@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   return (
     <div className="container">
-      <nav className="navbar navbar-light bg-light mb-3" style={style3}>
+      <nav className="navbar navbar-light mb-3" style={style3}>
         <Link to="/">
           <img
             className="navbar-brand mb-0"
@@ -36,7 +36,7 @@ export const Navbar = () => {
           />
         </Link>
 
-       <div className="btn-group">
+       <div className="btn-group" style={style2}>
        {store.favoritos.length == 0 ? <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Favorites {store.favoritos.length}</button>
        : <button className="btn dropdown-toggle" style={style4} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Favorites {store.favoritos.length}</button>}
         

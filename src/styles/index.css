@@ -1,3 +1,23 @@
 /* 
     General Styles
 */
+
+#sectionCharacters::-webkit-scrollbar {
+    background-color: white;
+    border-radius: 10px;
+    width: 10px;
+}
+
+#sectionCharacters::-webkit-scrollbar-track {
+    -webkit-box-shadow: 0 0 6px rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: #c9c9c9;
+    }
+
+#sectionCharacters::-webkit-scrollbar-thumb {
+        box-shadow: 0 0 6px rgb(255, 255, 255);
+        background-color: #636363;
+        border-radius: 10px;
+    }
+
+    

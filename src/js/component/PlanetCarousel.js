@@ -10,12 +10,17 @@ const PlanetCarousel = () => {
       overflowX: "scroll",
       overflowY: "white",
       alignItems: "center",
-      padding: "0.5rem 0.5rem"
+      backgroundColor: "rgb(224, 224, 224)",
+      boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+      height: "40rem",
+      paddingLeft: "20px",
+      paddingRight: "5px",
+      borderRadius: "5px"
     };
   
     return (
       <div className="container-fluid">
-      <div className="d-flex flex-row" style={style1}>
+      <div className="d-flex flex-row" style={style1} id="sectionCharacters">
         {store.planets.map((item, index)=> {
                 return(
                   <div className="col-4" key={index}>
