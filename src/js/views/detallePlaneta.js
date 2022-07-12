@@ -6,16 +6,18 @@ import PlanetCarousel from "../component/PlanetCarousel";
 export const DetallePlaneta = (props) => {
   const params = useParams();
   const [data, setData] = useState("");
-  const [loading, setLoading] = useState(false);
-  
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     fetch("https://www.swapi.tech/api/planets/" + params.uid)
       .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => err).finally(()=>{setLoading(false)});
-  }, [data]);
+      .then((data) =>{
+        setLoading(false);
+        return setData(data);
+      })
+      .catch((err) => err);
+  }, [params.uid]);
 
 
   let style1= {
@@ -29,15 +31,22 @@ export const DetallePlaneta = (props) => {
 
   return (
     <div className="container">
-    {data == '' ? "Cargando.. " : 
-	<div className="container=fluid">
-		<div className="row">
-			<div className="col-4"></div>
-	  <div className="col-4" style={style1}><h1>{data.result.properties.name}</h1></div>
+    {data == "" ? (
+        "Cargando.. "
+      ) : (
+        <div className="container=fluid">
+          <div className="row">
+            <div className="col-4"></div>
+        {loading ? "" :
+             <div className="col-4" style={style1}>
+             <h1>{data.result.properties.name}</h1>
+           </div>
+}
 	  <div className="col-4"></div>
 	  </div>
-	  <div className="row"></div>
+	    <div className="row"></div>
       <div className="row">
+
       {loading ? <div className="">Loading... </div> :
         <div className="col-6">
 			<div className="row">
@@ -67,7 +76,7 @@ export const DetallePlaneta = (props) => {
             <img
               src={`https://starwars-visualguide.com/assets/img/planets/${params.uid}.jpg`}
               className="card-img-top"
-	
+              style={style2}
               alt="..."
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; 
@@ -85,7 +94,7 @@ export const DetallePlaneta = (props) => {
 		  </div>
       </div>
       </div>
-	}
+	)}
 
 <div className="row pt-4"></div>
       <div className="row">

@@ -8,14 +8,16 @@ export const Detalle = (props) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(true);
 
-  let load = true;
-
   useEffect(() => {
+    setLoading(true)
     fetch("https://www.swapi.tech/api/people/" + params.uid)
       .then((res) => res.json())
-      .then((data) =>{setData(data)})
+      .then((data) =>{
+        setLoading(false);
+        return setData(data);
+      })
       .catch((err) => err);
-  }, [data]);
+  }, [params.uid]);
 
   let style1 = {
     fontSize: "30px",
@@ -34,13 +36,16 @@ export const Detalle = (props) => {
         <div className="container=fluid">
           <div className="row">
             <div className="col-4"></div>
-            <div className="col-4" style={style1}>
-              <h1>{data.result.properties.name}</h1>
-            </div>
-            <div className="col-4"></div>
-          </div>
-          <div className="row"></div>
-          <div className="row">
+            {loading ? "" :
+             <div className="col-4" style={style1}>
+             <h1>{data.result.properties.name}</h1>
+           </div>
+          }
+           <div className="col-4"></div>
+         </div>
+         <div className="row"></div>
+         <div className="row">
+           
           {loading ? <div className="">Cargando info... </div> :
             <div className="col-6">
               <div className="row">

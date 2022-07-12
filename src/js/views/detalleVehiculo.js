@@ -13,10 +13,13 @@ export const DetalleVehiculo = (props) => {
   useEffect(() => {
     setLoading(true);
     fetch("https://www.swapi.tech/api/vehicles/" + params.uid)
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => err).finally(()=>{setLoading(false)});
-  }, [data]);
+    .then((res) => res.json())
+    .then((data) =>{
+      setLoading(false);
+      return setData(data);
+    })
+    .catch((err) => err);
+}, [params.uid]);
 
 
   let style1= {
@@ -35,7 +38,11 @@ export const DetalleVehiculo = (props) => {
 	<div className="container=fluid">
 		<div className="row">
 			<div className="col-4"></div>
-	  <div className="col-4" style={style1}><h1>{data.result.properties.name}</h1></div>
+      {loading ? "" :
+             <div className="col-4" style={style1}>
+             <h1>{data.result.properties.name}</h1>
+           </div>
+}
 	  <div className="col-4"></div>
 	  </div>
     <br></br>
