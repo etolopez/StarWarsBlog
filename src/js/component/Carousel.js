@@ -19,10 +19,10 @@ const Carousel = () => {
 
   return (
     <div className="container-fluid">
-      <div className="d-flex flex-row" style={style1} id="sectionCharacters">
+      <div className="d-flex flex-row " style={style1} id="sectionCharacters">
         {store.personajes.map((item, index)=> {
                 return(
-                  <div className="col-4" key={index}>
+                  <div className="col-12 col-md-8 col-lg-6 m-0 p-0" key={index}>
                     <Card name={item.name} uid={item.uid} gender={item.gender}/>
                   </div>
                 )})}

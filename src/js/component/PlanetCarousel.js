@@ -23,7 +23,7 @@ const PlanetCarousel = () => {
       <div className="d-flex flex-row" style={style1} id="sectionCharacters">
         {store.planets.map((item, index)=> {
                 return(
-                  <div className="col-4" key={index}>
+                  <div className="col-12 col-md-8 col-lg-6" key={index}>
                     <PlanetCard name={item.name} uid={item.uid}/>
                   </div>
                 )})}
